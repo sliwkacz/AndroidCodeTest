@@ -36,13 +36,13 @@ public class MainActivity extends AppCompatActivity {
 
     private CosmonautActivityAdapter cosmonautActivitiesAdapter;
     private boolean isSortedAscending = true;
-    private List<CosmonautActivity> cosmonautActivitie;
+    private List<CosmonautActivity> cosmonautActivities;
     private LinearLayoutManager linearLayoutManager;
     private Parcelable dataState;
 
     @OnClick(R.id.fab_change_sorting)
     public void sortData() {
-        Collections.sort(cosmonautActivitie, (firstCosmonautActivity, secondCosmonautActivity) -> {
+        Collections.sort(cosmonautActivities, (firstCosmonautActivity, secondCosmonautActivity) -> {
             try {
                 Date firstDate = simpleDateFormat.parse(firstCosmonautActivity.getDate());
                 Date secondDate = simpleDateFormat.parse(secondCosmonautActivity.getDate());
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         isSortedAscending = !isSortedAscending;
-        cosmonautActivitiesAdapter.setCosmonautActivityList(cosmonautActivitie);
+        cosmonautActivitiesAdapter.setCosmonautActivityList(cosmonautActivities);
     }
 
     @Override
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         if (dataState != null) {
             recyclerView.getLayoutManager().onRestoreInstanceState(dataState);
-            cosmonautActivitiesAdapter.setCosmonautActivityList(cosmonautActivitie);
+            cosmonautActivitiesAdapter.setCosmonautActivityList(cosmonautActivities);
         }
     }
 
@@ -96,14 +96,14 @@ public class MainActivity extends AppCompatActivity {
         dataState = recyclerView.getLayoutManager().onSaveInstanceState();
         outState.putParcelable(DATA_STATE_KEY, dataState);
         outState.putParcelableArrayList(DATA_CONTENT,
-                (ArrayList<? extends Parcelable>) cosmonautActivitie);
+                (ArrayList<? extends Parcelable>) cosmonautActivities);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         if (savedInstanceState != null) {
-            cosmonautActivitie = savedInstanceState.getParcelableArrayList(DATA_CONTENT);
+            cosmonautActivities = savedInstanceState.getParcelableArrayList(DATA_CONTENT);
             dataState = savedInstanceState.getParcelable(DATA_STATE_KEY);
         }
     }
@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void handleResponse(List<CosmonautActivity> cosmonautActivitie) {
-        this.cosmonautActivitie = cosmonautActivitie;
+        this.cosmonautActivities = cosmonautActivitie;
         cosmonautActivitiesAdapter.setCosmonautActivityList(cosmonautActivitie);
     }
 }
