@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.rockspin.androiddevtest.MainActivity">
+    tools:context="com.rockspin.androiddevtest.mian.MainActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        tools:listitem="@layout/list_item_ev"/>
+        tools:listitem="@layout/list_item_ev"
+        />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_change_sorting"

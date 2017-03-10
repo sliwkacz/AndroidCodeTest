@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Rockspin Android Test</string>
     <string name="sort_by_date">Sort by Date</string>
+    <string name="request_error">Request error</string>
 </resources>

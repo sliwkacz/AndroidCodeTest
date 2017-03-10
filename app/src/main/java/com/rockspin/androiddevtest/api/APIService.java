@@ -1,9 +1,11 @@
-package com.rockspin.androiddevtest;
+package com.rockspin.androiddevtest.api;
+
+import com.rockspin.androiddevtest.api.model.CosmonautActivity;
 
 import java.util.List;
 
-import retrofit2.Call;
 import retrofit2.http.GET;
+import io.reactivex.Observable;
 
 public interface APIService {
 
@@ -12,5 +14,5 @@ public interface APIService {
      * @return The Retrofit Call
      */
     @GET("9kcy-zwvn.json?$order=date&$limit=20")
-    Call<List<CosmonautActivity>> getEVList();
+    Observable<List<CosmonautActivity>> getEVList();
 }
